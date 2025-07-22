@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaira Lumière - VIP</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Fundo preto sólido */
+        }
+        .btn-hover-effect {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .btn-hover-effect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(255,255,255,0.1);
+        }
+        /* Estilos para a barra de rolagem do modal */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background: #1a202c; /* cinza-900 */
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background-color: #4a5568; /* cinza-700 */
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Container Principal -->
+    <div class="relative w-full min-h-screen flex items-center justify-center">
+        
+        <!-- Conteúdo Central com espaçamento vertical -->
+        <div class="relative z-10 flex flex-col items-center text-center max-w-md w-full mx-auto px-4 py-12 sm:py-20">
+            
+            <!-- FOTO DE PERFIL ATUALIZADA -->
+            <img 
+                src="https://i.imgur.com/eAbjTIA.jpeg" 
+                alt="Foto de Perfil de Zaira Lumière" 
+                class="w-36 h-36 object-cover rounded-full shadow-lg mb-6"
+                onerror="this.onerror=null; this.src='https://placehold.co/144x144/FFFFFF/000000?text=ZL'"
+            >
+
+            <!-- NOME E DESCRIÇÃO -->
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-wider mb-2">Zaira Lumière</h1>
+            <p class="text-base md:text-lg text-gray-300 mb-8 italic">👁️‍🗨️ Onde a curiosidade morre… e o desejo nasce. <br> A partir daqui, não tem volta. Escolha seu caminho. 🔥💋</p>
+            
+            <!-- BOTÕES DE AÇÃO -->
+            <div class="w-full flex flex-col space-y-4">
+                <a href="https://t.me/ZairaLumii_BOT" target="_blank" class="btn-hover-effect bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg text-lg flex items-center justify-center shadow-lg">
+                    💎 ACESSO VIP IMEDIATO (Ouro do Cofre)
+                </a>
+                <a href="https://t.me/ZaiLuofc" target="_blank" class="btn-hover-effect bg-red-600 text-white font-bold py-3 px-6 rounded-lg text-lg flex items-center justify-center shadow-lg">
+                    🔥 CANAL DE PRÉVIAS (Conteúdo Gratuito)
+                </a>
+                <a href="https://www.instagram.com/zaira_lumiofc?igsh=Zjd4Znllc3pyZzAw" target="_blank" class="btn-hover-effect bg-gradient-to-r from-pink-500 to-orange-400 text-white font-bold py-3 px-6 rounded-lg text-lg flex items-center justify-center shadow-lg">
+                    📲 MEU LIFESTYLE (Instagram)
+                </a>
+                <a href="https://www.threads.net/@zaira_lumiofc" target="_blank" class="btn-hover-effect bg-gray-900 text-white border border-gray-700 font-bold py-3 px-6 rounded-lg text-lg flex items-center justify-center shadow-lg">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 9.25c-1.5 0-2.75 1.25-2.75 2.75s1.25 2.75 2.75 2.75 2.75-1.25 2.75-2.75S13.5 9.25 12 9.25zM12 16.25c-2.35 0-4.25-1.9-4.25-4.25S9.65 7.75 12 7.75s4.25 1.9 4.25 4.25-1.9 4.25-4.25 4.25zM18.5 7.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    THREADS (Conversas sem filtro)
+                </a>
+                <button id="openModalBtn" class="btn-hover-effect bg-purple-600 text-white font-bold py-3 px-6 rounded-lg text-lg flex items-center justify-center shadow-lg">
+                    🎁 MINHA WISHLIST (Me dê um presente)
+                </button>
+                <a href="https://t.me/zaira_lumiofc" target="_blank" class="btn-hover-effect bg-blue-500 text-white font-bold py-3 px-6 rounded-lg text-lg flex items-center justify-center shadow-lg">
+                    💬 DÚVIDAS E PROPOSTAS (Contato Direto)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DA WISHLIST -->
+    <div id="wishlistModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm hidden">
+        <div class="bg-gray-800 text-white rounded-2xl shadow-2xl w-11/12 max-w-2xl max-h-[90vh] flex flex-col">
+            <div class="flex-shrink-0 flex justify-between items-center p-4 border-b border-gray-700">
+                <h2 class="text-2xl font-bold text-purple-400">🎁 Minha Wishlist</h2>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+            </div>
+            <div class="p-6 space-y-6 overflow-y-auto modal-body">
+                
+                <!-- SUGESTÃO PERSONALIZADA -->
+                <div class="bg-gray-900/50 p-4 rounded-lg border-2 border-dashed border-purple-400 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-purple-300">✨ Personalize Você Mesmo</h3>
+                    <p class="text-sm text-gray-300 mb-3">Tem uma ideia diferente? Um desejo especial? Me conte!</p>
+                    <a 
+                        href="https://t.me/zaira_lumiofc?text=Eu%20sugiro%20que"
+                        target="_blank"
+                        class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-5 rounded-lg transition-colors duration-200"
+                    >
+                        Adicionar sua sugestão
+                    </a>
+                </div>
+
+                <!-- Categoria: Rosto e Expressão -->
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-pink-400">✨ Rosto e Expressão</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">👁️ Projeto 'Olhar Fatal'</h4><p class="text-sm text-gray-300">Manutenção profissional da extensão de cílios, essencial para um olhar marcante e sedutor.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 190,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">🌿 Design de Sobrancelhas com Laminação</h4><p class="text-sm text-gray-300">Técnica para alinhar e estilizar as sobrancelhas, conferindo um look moderno.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 150,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">👣 Tratamento 'Pés de Anjo'</h4><p class="text-sm text-gray-300">Spa para os pés com esfoliação, hidratação e esmaltação profissional.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 90,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">💅 Manicure Profissional</h4><p class="text-sm text-gray-300">Manutenção completa de unhas, ideal para ensaios e fotos em close.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 135,00</span></div>
+                    </div>
+                </div>
+                <!-- Categoria: Corpo e Pele -->
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-pink-400">🌸 Corpo e Pele</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">🍑 Ritual 'Pele de Pêssego'</h4><p class="text-sm text-gray-300">Limpeza de pele profunda com extração e hidratação, ideal para manter a pele saudável mesmo sem maquiagem.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 200,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">☀️ Bronze 'Golden Hour'</h4><p class="text-sm text-gray-300">Bronzeamento artificial para pele dourada, com marquinha de biquíni realçada.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 150,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">💧 Sessão 'Corpo Liso'</h4><p class="text-sm text-gray-300">Depilação com cera ou sessão de laser para uma pele lisa e pronta para fotos.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 250,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">💆‍♀️ Massagem 'Drenagem Linfática'</h4><p class="text-sm text-gray-300">Procedimento estético para reduzir inchaço e definir contorno corporal.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 180,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">🧴 Kit de Skincare de Luxo</h4><p class="text-sm text-gray-300">Produtos premium (sérum, hidratante, tônico) para cuidados faciais completos.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 500,00</span></div>
+                    </div>
+                </div>
+                <!-- Categoria: Cabelo e Maquiagem -->
+                <div>
+                    <h3 class="text-xl font-bold mb-3 text-pink-400">💇‍♀️ Cabelo e Maquiagem</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">🧜‍♀️ Ritual Capilar 'Sereia'</h4><p class="text-sm text-gray-300">Tratamento de hidratação e reconstrução para brilho e movimento.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 160,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">🎨 Retoque de Cor e Luzes</h4><p class="text-sm text-gray-300">Coloração ou retoque de mechas para manter a cor vibrante.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 450,00</span></div>
+                        <div class="bg-gray-700/50 p-4 rounded-lg"><h4 class="font-bold">💄 Maquiagem Profissional para Ensaio</h4><p class="text-sm text-gray-300">Produção com maquiador profissional para garantir alta qualidade e fixação.</p><span class="text-lg font-semibold text-green-400 mt-1 block">R$ 350,00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('wishlistModal');
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        };
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
